@@ -1,0 +1,17 @@
+commit-msg:
+  commands:
+    conventional-commit:
+      run: python3 scripts/quality/check_commit_message.py {1}
+
+pre-commit:
+  commands:
+    python-format:
+      glob:
+        - "{app,tests,services/viewer_api}/*.py"
+        - "{app,tests,services/viewer_api}/**/*.py"
+      run: pixi run --environment default ruff format --check {staged_files}
+    python-check:
+      glob:
+        - "{app,tests,configs,scripts,services/viewer_api}/*.{py,json,toml,sh}"
+        - "{app,tests,configs,scripts,services/viewer_api}/**/*.{py,json,toml,sh}"
+      run: ./scripts/quality/check-python.sh

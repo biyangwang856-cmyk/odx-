@@ -1,0 +1,17 @@
+{
+  "runtime": {
+    "name": "REMESH_v55_runtime_etc1s_meshopt",
+    "source": "results/lglglg-remesh-viewer-v1/tiles-raw",
+    "output": "results/lglglg-remesh-viewer-v1/tiles-v55-runtime-etc1s-meshopt",
+    "simplify_ratio": null,
+    "simplify_error": null,
+    "webp_quality": 82,
+    "webp_effort": 70,
+    "meshopt_level": "high",
+    "gpu_texture_codec": "etc1s",
+    "gpu_texture_quality": 255,
+    "gpu_texture_compression_level": 1,
+    "gpu_texture_minimum_psnr": 32.0,
+    "gpu_texture_maximum_byte_ratio": 1.15
+  }
+}

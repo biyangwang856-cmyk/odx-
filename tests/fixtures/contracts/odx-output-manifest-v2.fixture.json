@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "odx-output-manifest.v2",
+  "outputId": "odx-output:9e1bbc5ad26ecb0c00c70361",
+  "input": {
+    "manifestDigest": "sha256:32b39644782124dd9fe3438030719d63565e3eb4361e0ac69319d927dd823355",
+    "inputId": "lglglg-acquisition-20260814",
+    "imageContentDigest": "sha256:17d7a4f7f7e7da0a64a55894edabfb16bfbeffbd2184e40fa0eefddcae60107b"
+  },
+  "producer": {
+    "engine": "odx",
+    "engineVersion": "3.8.3",
+    "imageDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "sourceRevision": "eb9fd56ac430fc3735401d88aaef9945ebd00e14"
+  },
+  "parametersDigest": "sha256:d2c2f87f69d886bcd04ff557a34cf7bedbce8c86f50901adc6925e996b858010",
+  "checkpoint": {
+    "checkpointId": "checkpoint:odx:9e1bbc5ad26ecb0c00c70361",
+    "stage": "odm_orthophoto",
+    "contentDigest": "sha256:a8b5791c47d348b3ea2c30f35d1d73febe10786d9e1bbc5ad26ecb0c00c70361"
+  },
+  "coordinates": {
+    "horizontal": "EPSG:32650",
+    "vertical": "unspecified",
+    "axisOrder": "east,north,up",
+    "originOffsetMeters": [
+      215748,
+      2519175,
+      0
+    ]
+  },
+  "artifacts": {
+    "mesh": {
+      "obj": {
+        "artifactId": "artifact:fixture:odx-obj-v1",
+        "relativePath": "odm_texturing/odm_textured_model_geo.obj",
+        "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "bytes": 1000,
+        "mediaType": "model/obj"
+      },
+      "mtl": {
+        "artifactId": "artifact:fixture:odx-mtl-v1",
+        "relativePath": "odm_texturing/odm_textured_model_geo.mtl",
+        "contentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "bytes": 200,
+        "mediaType": "model/mtl"
+      },
+      "textures": [
+        {
+          "artifactId": "artifact:fixture:odx-texture-1-v1",
+          "relativePath": "odm_texturing/odm_textured_model_geo_material0000.jpg",
+          "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+          "bytes": 300,
+          "mediaType": "image/jpeg"
+        }
+      ]
+    },
+    "orthophoto": {
+      "artifactId": "artifact:fixture:odx-orthophoto-v2",
+      "relativePath": "odm_orthophoto/odm_orthophoto.tif",
+      "contentDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "bytes": 400,
+      "mediaType": "image/tiff"
+    }
+  }
+}

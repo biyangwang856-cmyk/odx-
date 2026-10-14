@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "road-trial-rejection/v1",
+  "inputPhotos": 405,
+  "baselineCommit": "39aad10",
+  "baselineTag": "checkpoint/orthophoto-baseline-before-road-optimization-20261013",
+  "fullRasterUpdated": false,
+  "sourceSnapshot": "/volume/wzhang/mesh-research-workspace/runs/mangrove-077-20261013/research/road-trial-source-snapshot-20261013/manifest.json",
+  "decision": "not-promoted",
+  "reasons": [
+    {
+      "region": "west-lanes",
+      "evidence": [
+        {
+          "first": "DJI_20261010151817_0016_V.JPG.tif",
+          "second": "DJI_20261010151819_0019_V.JPG.tif",
+          "staticPixels": 439965,
+          "proof": {
+            "rawForward": 43,
+            "rawMutual": 38,
+            "unique": 33,
+            "accepted": false,
+            "reason": "insufficient-consensus",
+            "inliers": 18,
+            "consensusFraction": 0.5454545454545454,
+            "occupiedCells": [
+              5,
+              8,
+              9,
+              10,
+              11
+            ],
+            "spanFractions": [
+              0.744736572265625,
+              0.1729325450550426
+            ],
+            "medianVectorPixels": [
+              1.409149169921875,
+              -0.071502685546875
+            ],
+            "p90ActualPixels": 1.6080580873784258,
+            "trainingPoints": 8,
+            "heldoutPoints": 25,
+            "holdoutResidualP90Pixels": 1.674978938084951,
+            "fittedCorrectionApplied": false
+          }
+        }
+      ]
+    },
+    {
+      "region": "centre-lanes",
+      "evidence": [
+        {
+          "first": "DJI_20261010151832_0040_V.JPG.tif",
+          "second": "DJI_20261010151830_0037_V.JPG.tif",
+          "staticPixels": 301760,
+          "proof": {
+            "rawForward": 5,
+            "rawMutual": 4,
+            "unique": 4,
+            "accepted": false,
+            "reason": "insufficient-independent-matches"
+          }
+        }
+      ]
+    },
+    {
+      "region": "east-lanes",
+      "evidence": [
+        {
+          "first": "DJI_20261010151850_0067_V.JPG.tif",
+          "second": "DJI_20261010151852_0070_V.JPG.tif",
+          "staticPixels": 436459,
+          "proof": {
+            "rawForward": 25,
+            "rawMutual": 20,
+            "unique": 16,
+            "accepted": false,
+            "reason": "insufficient-consensus",
+            "inliers": 3,
+            "consensusFraction": 0.1875,
+            "occupiedCells": [
+              8
+            ],
+            "spanFractions": [
+              0.10792543538411459,
+              0.023224981398809522
+            ],
+            "medianVectorPixels": [
+              0.938934326171875,
+              0.05816650390625
+            ],
+            "p90ActualPixels": 7.087594948561689,
+            "trainingPoints": 10,
+            "heldoutPoints": 6,
+            "holdoutResidualP90Pixels": 6.16346778045332,
+            "fittedCorrectionApplied": false
+          }
+        }
+      ]
+    }
+  ]
+}

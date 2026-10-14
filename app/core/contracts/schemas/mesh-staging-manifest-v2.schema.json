@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://surveying.local/schemas/mesh-staging-manifest-v2.schema.json",
+  "title": "mesh-staging-manifest.v2",
+  "x-semanticConstraints": [
+    "Every originOffsetMeters value MUST be finite; non-finite values are not valid JSON and every semantic consumer MUST reject them."
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "stagingId", "candidateId", "source", "coordinates", "pipeline", "tileset", "files", "validation"],
+  "properties": {
+    "schemaVersion": {"const": "mesh-staging-manifest.v2"},
+    "stagingId": {"type": "string", "pattern": "^staging:sha256:[0-9a-f]{64}$"},
+    "candidateId": {"type": "string", "pattern": "^mesh:[a-z0-9._-]+:[a-z0-9._-]+$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["odxOutputManifestDigest", "checkpointId"],
+      "properties": {
+        "odxOutputManifestDigest": {"$ref": "#/$defs/sha256"},
+        "checkpointId": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "coordinates": {"$ref": "#/$defs/coordinates"},
+    "pipeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelVersion", "taskRevision", "basisUniversal", "texturePolicyDigest", "validationReport"],
+      "properties": {
+        "modelVersion": {"const": "v55"},
+        "taskRevision": {"const": "mesh.remesh-3d-tiles.v2"},
+        "basisUniversal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "gitCommit", "sourceSha256", "binarySha256"],
+          "properties": {
+            "version": {"const": "1.16.3"},
+            "gitCommit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "sourceSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "binarySha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        },
+        "texturePolicyDigest": {"$ref": "#/$defs/sha256"},
+        "validationReport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["relativePath", "contentDigest", "payloadDigest"],
+          "properties": {
+            "relativePath": {"const": "build-report.json"},
+            "contentDigest": {"$ref": "#/$defs/sha256"},
+            "payloadDigest": {"$ref": "#/$defs/sha256"}
+          }
+        }
+      }
+    },
+    "tileset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "relativePath", "contentDigest", "contentTree"],
+      "properties": {
+        "artifactId": {"$ref": "#/$defs/identity"},
+        "relativePath": {"const": "tileset.json"},
+        "contentDigest": {"$ref": "#/$defs/sha256"},
+        "contentTree": {"$ref": "#/$defs/tree"}
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/file"}
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["referencedContents", "missingContents", "outputBytes", "maxOutputBytes"],
+      "properties": {
+        "referencedContents": {"type": "integer", "minimum": 1},
+        "missingContents": {"const": 0},
+        "outputBytes": {"type": "integer", "minimum": 1},
+        "maxOutputBytes": {"type": ["integer", "null"], "minimum": 1, "description": "null means no configured byte ceiling"}
+      }
+    }
+  },
+  "$defs": {
+    "identity": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"},
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "size_bytes", "sha256", "content_type"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "maxLength": 1024, "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.{1,2}(?:/|$))[^/]+(?:/[^/]+)*$"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "content_type": {"type": "string", "pattern": "^[^\\s/]+/[^\\s/]+$"}
+      }
+    },
+    "tree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "contentDigest", "files", "bytes"],
+      "properties": {
+        "algorithm": {"const": "sha256-tree-v1"},
+        "contentDigest": {"$ref": "#/$defs/sha256"},
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizontal", "vertical", "axisOrder", "originOffsetMeters"],
+      "properties": {
+        "horizontal": {"type": "string", "pattern": "^EPSG:[1-9][0-9]*$"},
+        "vertical": {"enum": ["ellipsoidal", "orthometric", "unspecified"]},
+        "axisOrder": {"enum": ["east,north,up", "longitude,latitude,height"]},
+        "originOffsetMeters": {
+          "type": "array",
+          "prefixItems": [{"type": "number"}, {"type": "number"}, {"type": "number"}],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    }
+  }
+}

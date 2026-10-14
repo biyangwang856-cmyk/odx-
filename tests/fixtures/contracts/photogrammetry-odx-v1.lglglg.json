@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "photogrammetry.odx.v1",
+  "inputId": "lglglg-acquisition-20260814",
+  "acquisition": {
+    "id": "lglglg-acquisition-20260814"
+  },
+  "images": {
+    "artifactId": "artifact:images:lglglg-20260814",
+    "contentDigest": "sha256:17d7a4f7f7e7da0a64a55894edabfb16bfbeffbd2184e40fa0eefddcae60107b",
+    "bytes": 4444096141,
+    "fileCount": 546,
+    "treeAlgorithm": "sha256-tree-v1",
+    "mediaType": "application/vnd.surveying.image-tree"
+  },
+  "crs": {
+    "horizontal": "EPSG:32650",
+    "vertical": "unspecified",
+    "axisOrder": "east,north,up"
+  },
+  "resourceBudget": {
+    "maxImages": 600,
+    "maxInputBytes": 5000000000,
+    "maxWallSeconds": 86400,
+    "maxCpuCores": 32,
+    "maxMemoryBytes": 137438953472,
+    "maxDiskBytes": 1099511627776
+  },
+  "odxParameters": {
+    "featureQuality": "ultra",
+    "matcherNeighbors": 8,
+    "pcQuality": "ultra",
+    "meshSize": 200000,
+    "meshOctreeDepth": 11,
+    "texturingToneMapping": "none"
+  }
+}

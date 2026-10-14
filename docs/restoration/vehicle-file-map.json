@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "vehicle-restoration-file-map/v1",
+  "recommended": [
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\ogs2-staging\\ogs2.py",
+      "target": "app/model_engine/ogs2.py",
+      "stage": "OGS2",
+      "sha256": "eb77dcc5c36f1495f49b7449db42e680c4dab3c24e780b7697e45638773900f6",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\tmp\\restore-vehicle-accepted\\ogs2_visibility.py",
+      "target": "app/model_engine/ogs2_visibility.py",
+      "stage": "OGS2",
+      "sha256": "65408a890ddf9e05910910990bd5dd4a7b64f1255b438622df95034e10f95725",
+      "confidence": "exact historical run SHA256 verified after original formatter/import order restored"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\ogs2_temporal.py",
+      "target": "app/model_engine/ogs2_temporal.py",
+      "stage": "conservative short temporal",
+      "sha256": "30366c2e4db9aa1fe764cdf064fc927a5dfe21df4306305665ee852b886179d8",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\ogs2_deghost.py",
+      "target": "app/model_engine/ogs2_deghost.py",
+      "stage": "conservative short temporal",
+      "sha256": "ad4c124d240c54cbcd1184f98cceaa01d083a0aa35ec6b61093d3b75ab608061",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint.py",
+      "target": "app/model_engine/ogs2_joint.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "1a43f8e4d164f94e184b2487af14c101edc1ca017dd75942c4731cf67d095f3f",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint_geometry.py",
+      "target": "app/model_engine/ogs2_joint_geometry.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "5d56f61371f5e17308a661fc4d63b6a2cb721015344f2eee24f89abf1c873480",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint_policy.py",
+      "target": "app/model_engine/ogs2_joint_policy.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "880bdb1fa182668b9a7d9ec3d5144506eb652f7a70e97d71c4427952d861e3f8",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint_cohort.py",
+      "target": "app/model_engine/ogs2_joint_cohort.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "b1819df554805b787894345376aa824892e8e767f4d543d57d324d522b942ca1",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint_closure.py",
+      "target": "app/model_engine/ogs2_joint_closure.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "e6d8d1ac5b9dda2b30735002ec73382db4681f9139828e63b2fde31885188754",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_joint_seam.py",
+      "target": "app/model_engine/ogs2_joint_seam.py",
+      "stage": "joint whole object/source constraints",
+      "sha256": "9a552d37ee759577dd0a7773b6a5126d376e06913f4fe24625db243ab7b2ee2a",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\tmp\\restore-vehicle-accepted\\ogs2_road_coherent.py",
+      "target": "app/model_engine/ogs2_road_coherent.py",
+      "stage": "accepted road exposure",
+      "sha256": "ecaff54708fcb6ccfafc1f74b34e83a168405bb66604ac5e84c814c8fc0370db",
+      "confidence": "recovered complete pre-guard stdout; high confidence bd84346 equivalent, exact Git blob unavailable"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\ogs2_apply_patch.py",
+      "target": "app/model_engine/ogs2_apply_patch.py",
+      "stage": "full export",
+      "sha256": "e037637fac9c1739960248ef7dbb61a6fcf0d405d77c0bdaee844ff06c9ebb05",
+      "confidence": "accepted block export plus later safer rounded-boundary check; retest required"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\inspect_joint_static.py",
+      "target": "app/experiments/tools/inspect_joint_static.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "4e6cdd47a6483fb33daa21bad3daa6de0f2d92bea4f2ff3182977bf0db6d14d5",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\collect_road_evidence.py",
+      "target": "app/experiments/tools/collect_road_evidence.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "90ad8448ca50dfa9939e7e507f309580a35d9486f7c78979570139b1a0c2e152",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\collect_mosaic_vehicles.py",
+      "target": "app/experiments/tools/collect_mosaic_vehicles.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "2fdb52dec9c12d316660d43306eb1c952151d6aecf1ebbe8b4cd45880b3c8cd4",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\validate_joint_lab.py",
+      "target": "app/experiments/tools/validate_joint_lab.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "f9890b84ba857256ee0c3f4ba8a14c9308df0a8dd719a1d77b79e5963128374f",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\build_road_review.py",
+      "target": "app/experiments/tools/build_road_review.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "972e423af13a1bd63244710068a7cabac7d6c35b10b2354743dca62c1ff4f6f5",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\prepare_joint_validation.py",
+      "target": "app/experiments/tools/prepare_joint_validation.py",
+      "stage": "optional generic evidence/verification CLI; args need new scene",
+      "sha256": "895cc5536e5e98293100290ab3a9a41ea2febe231a478be8a085f55a922da144",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\ogs2-staging\\test_ogs2.py",
+      "target": "tests/test_ogs2.py",
+      "stage": "tests",
+      "sha256": "b5eab2a966bcd31e591626e47ce46e26ab37afbb5c2e37c5980d274eeefb5bec",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\ogs2-staging\\test_ogs2_visibility.py",
+      "target": "tests/test_ogs2_visibility.py",
+      "stage": "tests",
+      "sha256": "d0767ebbdabbd394077ecb77b3f4d9602a118736314a23992001326b80ab45aa",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\test_ogs2_temporal.py",
+      "target": "tests/test_ogs2_temporal.py",
+      "stage": "tests",
+      "sha256": "5290130238b224b319b6facf48f8d5f7e7c8da5b95b5d7795e04aba8e41f6166",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\test_ogs2_deghost.py",
+      "target": "tests/test_ogs2_deghost.py",
+      "stage": "tests",
+      "sha256": "77edd93314c580d8e5af9470e46c0c17b9ed1338ccff06066a4fc5ff1285a4a8",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\test_ogs2_clock.py",
+      "target": "tests/test_ogs2_clock.py",
+      "stage": "tests",
+      "sha256": "7fc2999daca76fc99cb72505d00879506bc9e7ef2e93b7c0f75376ae9ac212ce",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-staging\\test_ogs2_deghost_contract.py",
+      "target": "tests/test_ogs2_deghost_contract.py",
+      "stage": "tests",
+      "sha256": "45d98ec98a451acc919bbacf98c582702dc82c5e2616ac03c44674afcfc9fc4f",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_geometry.py",
+      "target": "tests/test_joint_geometry.py",
+      "stage": "tests",
+      "sha256": "7dd986871c5b92344b8935059f0deb954e59f9d37d08c62963df800c743cb50c",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_policy_cpu.py",
+      "target": "tests/test_joint_policy_cpu.py",
+      "stage": "tests",
+      "sha256": "7abd516af54a17dd0fa8a3733e1996aa44cdfc7fbcc33c90a71b443018b0adbf",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_seam_cpu.py",
+      "target": "tests/test_joint_seam_cpu.py",
+      "stage": "tests",
+      "sha256": "cc3c8b1dd21a9e51ef55f10113264b0c46fd56b67d971589a1aa8817099f8f2a",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_seam_backend.py",
+      "target": "tests/test_joint_seam_backend.py",
+      "stage": "tests",
+      "sha256": "db84be4577f4e37b5917776175bf56f67e4f133a9e6361848b36dab3ede6a352",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_closure_cpu.py",
+      "target": "tests/test_joint_closure_cpu.py",
+      "stage": "tests",
+      "sha256": "7a9f64ff05a7efea6dbc50adbde19f9600045b7516ded061986861783c943cff",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_uncertainty.py",
+      "target": "tests/test_joint_uncertainty.py",
+      "stage": "tests",
+      "sha256": "a4b650edfd2a6c182ea136efaa7333bbce721247dac3029612075323f951b5f9",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_joint_cohort_cpu.py",
+      "target": "tests/test_joint_cohort_cpu.py",
+      "stage": "tests",
+      "sha256": "0e658c179a5ab9f4402637ec54597cb03e4df086e2aba3c3a2216f0cfea87967",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_ogs2_full_patch.py",
+      "target": "tests/test_ogs2_full_patch.py",
+      "stage": "tests",
+      "sha256": "55a4c9d4cee887691126d4ac21ce8ff01c1e01a46471b8830f18572d74d7a470",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\deghost-next-staging\\test_road_full_export_blocks.py",
+      "target": "tests/test_road_full_export_blocks.py",
+      "stage": "tests",
+      "sha256": "fcf63333aecbcbc0b0bac2ffe8e77065e94a87acd67fba37b5ce170640e62c72",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    },
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\ogs2-staging\\ogs2-requirements.txt",
+      "target": "docker/ogs2/requirements.txt",
+      "stage": "environment manifest; Torch and SAM2 separately installed",
+      "sha256": "663f7cc3fb711d010a105cfc4a72b785e508128a7bc4481b96e7db17c5c1ffec",
+      "confidence": "saved local staging; portable logic, must retest on new dataset"
+    }
+  ],
+  "excludedDefault": [
+    "ogs2_road_guarded.py",
+    "ogs2_road_guards.py",
+    "ogs2_road_background.py",
+    "test_road_background.py",
+    "test_road_context.py",
+    "test_road_integrity_review.py"
+  ],
+  "doNotRun": [
+    "*_lab.py hard-coded run launchers/commit/setup scripts",
+    "ft070-ogs2-windows.json old-scene coordinates",
+    "annotate_bus_evidence.py manual identity evidence",
+    "old project/photo/cache paths",
+    "MP-SfM / Murre / OpenMVS / depth-texture / physical meshing intermediate experiments",
+    "collect_road_masks.py fixed FT-070 paths and two old photo names; use collect_road_evidence.py generic CLI"
+  ],
+  "weights": [
+    "IDEA-Research/grounding-dino-tiny HF config/tokenizer/model.safetensors",
+    "SAM2.1 sam2.1_hiera_tiny.pt; configs/sam2.1/sam2.1_hiera_t.yaml supplied by SAM2 code"
+  ],
+  "requiredRuntime": [
+    "Python >=3.10",
+    "Torch CUDA compatible with H200",
+    "orthority 0.7.0",
+    "rasterio 1.4.4",
+    "numpy 1.26.4",
+    "scipy 1.14.1",
+    "opencv-python 4.10.0.84",
+    "numba 0.61.2",
+    "plyfile 1.1.2",
+    "transformers 4.49.0",
+    "huggingface-hub 0.28.1",
+    "hydra-core 1.3.2",
+    "iopath 0.1.10",
+    "Pillow",
+    "pytest",
+    "SAM2 source revision to pin after re-acquisition"
+  ],
+  "adaptationRequired": [
+    "build_road_review.py display title FT-070; change display label only",
+    "Recreate source photos, timestamps, masks, surface and baseline grid from new dataset.",
+    "Strict numeric validation does not prove cross-photo identity or complete real-shadow support; explicit independent evidence still required."
+  ],
+  "alternatives": [
+    {
+      "source": "C:\\Users\\18906\\Documents\\Codex\\2026-09-30\\wo-b\\tmp\\restore-vehicle-accepted\\ogs2_apply_patch_accepted.py",
+      "target": "app/model_engine/ogs2_apply_patch.py",
+      "sha256": "12139e09fd585b79e620e4b83d727cfa5f215bd4a595df7370fd5e2d7058f154",
+      "reason": "Exactly matches previously accepted full-v1 export. Current staging adds rounded window boundary safety tested separately."
+    }
+  ],
+  "SAM2SourceRevision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "weightsManifest": "outputs/ogs2-20261010/model-provenance.json"
+}

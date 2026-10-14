@@ -1,0 +1,10 @@
+# CI builds keep the lockfile's exact package versions and checksums, while
+# redirecting prefix.dev package requests to measured mainland mirrors.
+[mirrors]
+"https://prefix.dev/conda-forge" = [
+  "https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge",
+  "https://mirrors.nju.edu.cn/anaconda/cloud/conda-forge",
+]
+
+[concurrency]
+downloads = 12

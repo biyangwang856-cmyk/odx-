@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://surveying.local/schemas/odx-output-manifest-v2.schema.json",
+  "title": "odx-output-manifest.v2",
+  "x-semanticConstraints": [
+    "All artifactId values and all relativePath values MUST be globally unique across artifacts; every consumer MUST enforce this before resolving a file.",
+    "The input and coordinates fields MUST match the referenced photogrammetry.odx.v1 manifest; every consumer MUST enforce this lineage before use.",
+    "checkpoint.contentDigest MUST bind the input manifest digest, producer identity, ODX parameters, coordinates, and artifacts; outputId and checkpointId MUST be derived from that digest."
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "outputId",
+    "input",
+    "producer",
+    "parametersDigest",
+    "checkpoint",
+    "coordinates",
+    "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "odx-output-manifest.v2"
+    },
+    "outputId": {
+      "$ref": "#/$defs/identity"
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestDigest",
+        "inputId",
+        "imageContentDigest"
+      ],
+      "properties": {
+        "manifestDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "inputId": {
+          "$ref": "#/$defs/identity"
+        },
+        "imageContentDigest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "engine",
+        "engineVersion",
+        "imageDigest",
+        "sourceRevision"
+      ],
+      "properties": {
+        "engine": {
+          "const": "odx"
+        },
+        "engineVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "imageDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sourceRevision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "parametersDigest": {
+      "$ref": "#/$defs/sha256"
+    },
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checkpointId",
+        "stage",
+        "contentDigest"
+      ],
+      "properties": {
+        "checkpointId": {
+          "$ref": "#/$defs/identity"
+        },
+        "stage": {
+          "const": "odm_orthophoto"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "coordinates": {
+      "$ref": "#/$defs/coordinates"
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mesh",
+        "orthophoto"
+      ],
+      "properties": {
+        "mesh": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "obj",
+            "mtl",
+            "textures"
+          ],
+          "properties": {
+            "obj": {
+              "$ref": "#/$defs/file"
+            },
+            "mtl": {
+              "$ref": "#/$defs/file"
+            },
+            "textures": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/file"
+              }
+            }
+          }
+        },
+        "orthophoto": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/file"
+            },
+            {
+              "properties": {
+                "mediaType": {
+                  "const": "image/tiff"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identity": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*[\\u0000\\r\\n])(?!.*(?:^|/)\\.{1,2}(?:/|$))[^/]+(?:/[^/]+)*(?![\\s\\S])"
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "relativePath",
+        "contentDigest",
+        "bytes",
+        "mediaType"
+      ],
+      "properties": {
+        "artifactId": {
+          "$ref": "#/$defs/identity"
+        },
+        "relativePath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mediaType": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 127,
+          "pattern": "^[^\\s/]+/[^\\s/]+(?![\\s\\S])"
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "horizontal",
+        "vertical",
+        "axisOrder",
+        "originOffsetMeters"
+      ],
+      "properties": {
+        "horizontal": {
+          "type": "string",
+          "pattern": "^EPSG:[1-9][0-9]*$"
+        },
+        "vertical": {
+          "enum": [
+            "ellipsoidal",
+            "orthometric",
+            "unspecified"
+          ]
+        },
+        "axisOrder": {
+          "enum": [
+            "east,north,up",
+            "longitude,latitude,height"
+          ]
+        },
+        "originOffsetMeters": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    }
+  }
+}

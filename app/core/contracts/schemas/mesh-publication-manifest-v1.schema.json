@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://surveying.local/schemas/mesh-publication-manifest-v1.schema.json",
+  "title": "mesh-publication-manifest.v1",
+  "x-semanticConstraints": [
+    "candidateId MUST identify a production-mesh entry in mesh-candidate-identities.v1.",
+    "publicationId, atomicDirectory.treeDigest, atomicDirectory.directoryName, and every result identity MUST match before publication."
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "publicationId", "candidateId", "state", "source", "atomicDirectory", "tileset", "validation", "result"],
+  "properties": {
+    "schemaVersion": {"const": "mesh-publication-manifest.v1"},
+    "publicationId": {"type": "string", "pattern": "^publication:sha256:[0-9a-f]{64}$"},
+    "candidateId": {"type": "string", "pattern": "^mesh:[a-z0-9._-]+:[a-z0-9._-]+$"},
+    "state": {"const": "published"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["odxOutputManifestDigest", "remeshStrategyRevision"],
+      "properties": {
+        "odxOutputManifestDigest": {"$ref": "#/$defs/sha256"},
+        "remeshStrategyRevision": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "atomicDirectory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "treeDigest", "files", "bytes", "directoryName"],
+      "properties": {
+        "algorithm": {"const": "sha256-tree-v1"},
+        "treeDigest": {"$ref": "#/$defs/sha256"},
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1},
+        "directoryName": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "tileset": {"$ref": "#/$defs/tileset"},
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract", "reportDigest"],
+      "properties": {
+        "contract": {"const": "mesh-publication-validation.v1"},
+        "reportDigest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "publicationId", "candidateId", "tileset"],
+      "properties": {
+        "schemaVersion": {"const": "mesh-publication-result.v1"},
+        "publicationId": {"type": "string", "pattern": "^publication:sha256:[0-9a-f]{64}$"},
+        "candidateId": {"type": "string", "pattern": "^mesh:[a-z0-9._-]+:[a-z0-9._-]+$"},
+        "tileset": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["artifactId", "contentDigest", "accessPath", "authorization"],
+          "properties": {
+            "artifactId": {"$ref": "#/$defs/identity"},
+            "contentDigest": {"$ref": "#/$defs/sha256"},
+            "accessPath": {"type": "string", "pattern": "^/v1/mesh-publications/publication:sha256:[0-9a-f]{64}/tileset\\.json$"},
+            "authorization": {"const": "bearer"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identity": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"},
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "tileset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "relativePath", "contentDigest", "mediaType"],
+      "properties": {
+        "artifactId": {"$ref": "#/$defs/identity"},
+        "relativePath": {"const": "tileset.json"},
+        "contentDigest": {"$ref": "#/$defs/sha256"},
+        "mediaType": {"const": "application/json"}
+      }
+    }
+  }
+}

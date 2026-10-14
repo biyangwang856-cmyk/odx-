@@ -1,0 +1,14 @@
+{
+  "version": "4.5.0",
+  "nodeVersion": "24.19.0",
+  "npmVersion": "11.17.0",
+  "sharpVersion": "0.35.4",
+  "packageJsonSha256": "c38c020754d2b4a6ecc6a4b0b7f7bfcd1262a8250d9a17fcb607793be196b032",
+  "packageLockSha256": "a9bdec4579abd4db1d5890f0a9e1218a596975d6588f21f62ed26582b290a2b3",
+  "treeSha256": "01b4b34350737f03de9e95a9be68c9a9a7a055f261f2d691cd28d38f14e92aad",
+  "audit": {
+    "command": "npm audit --omit=dev --audit-level=high",
+    "high": 0,
+    "critical": 0
+  }
+}

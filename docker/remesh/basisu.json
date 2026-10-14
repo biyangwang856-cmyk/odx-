@@ -1,0 +1,16 @@
+{
+  "version": "1.16.3",
+  "gitCommit": "1531cfaf9ed5232248a0a45736686a849ca3befc",
+  "sourceUrl": "https://github.com/BinomialLLC/basis_universal/archive/refs/tags/1.16.3.tar.gz",
+  "sourceSha256": "b89563aa5879eed20f56b9cfa03b52848e759531fd5a1d51a8f63c846f96c2ac",
+  "binaryPlatform": "linux-x86_64",
+  "binarySha256": "2c3c041c2b3c33cacfee8b7afd5012513531f71009c4dfd83e1c5131463d4087",
+  "binaryBytes": 2642168,
+  "license": "Apache-2.0",
+  "cmake": {
+    "buildType": "Release",
+    "sse": false,
+    "zstd": true,
+    "opencl": false
+  }
+}

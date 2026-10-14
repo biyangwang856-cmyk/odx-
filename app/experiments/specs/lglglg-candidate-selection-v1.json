@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "mesh-candidate-selection.v1",
+  "comparisonProtocolDigest": "sha256:b36886942e7a0a6c9db8c14e31bd631707d73a13d7bc4b544ecafd4881e19aee",
+  "productionCandidateIds": ["remesh-v55"],
+  "preferenceOrder": ["remesh-v55"],
+  "budgets": {
+    "maxPublicationBytes": 120000000,
+    "maxBrowserTransferBytes": 180000000,
+    "maxPeakMemoryBytes": 805306368,
+    "minVisibleTriangles": 6000000,
+    "minVisibleContents": 205,
+    "maxFailedRequests": 0
+  },
+  "timeoutDisposition": "record-as-unpassed-boundary"
+}

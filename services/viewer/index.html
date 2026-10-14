@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LGLGLG · 模型对比台</title>
+  </head>
+  <body class="mode-a1">
+    <div id="cesiumContainer"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="eyebrow">LGLGLG / 546 IMAGES</div>
+        <h1 data-label="title">模型对比台</h1>
+      </div>
+      <nav class="mode-switch" aria-label="显示模式">
+        <button data-mode="split">左右对比</button>
+        <button data-label="mode-terra" data-mode="terra">仅左侧</button>
+        <button class="active" data-label="mode-a1" data-mode="a1">仅右侧</button>
+        <button data-mode="flicker">闪烁切换</button>
+      </nav>
+      <div class="top-spacer"></div>
+      <label class="shared-control">统一 SSE
+        <input id="sseRange" type="range" min="1" max="128" step="1" value="8">
+        <output id="sseValue">8</output>
+      </label>
+      <div class="live-pill"><i class="live-dot"></i><span id="globalFps">-- FPS</span></div>
+    </header>
+
+    <aside class="side-panel left">
+      <section class="panel-section">
+        <div class="model-tag"><strong class="terra-text" data-label="terra">左侧模型</strong><small>baseline · B3DM</small></div>
+        <div class="metric-grid" data-metrics="terra">
+          <div class="metric"><span>可见 / 已加载瓦片</span><strong data-key="tiles">0 / 0</strong></div>
+          <div class="metric"><span>请求 / 处理中</span><strong data-key="queue">0 / 0</strong></div>
+          <div class="metric"><span>可见三角面</span><strong data-key="triangles">0</strong></div>
+          <div class="metric"><span>GPU 缓存估算</span><strong data-key="memory">0 MB</strong></div>
+          <div class="metric"><span>HTTP 请求 / 数据</span><strong data-key="network">0 / 0 MB</strong></div>
+          <div class="metric"><span>首视图加载</span><strong data-key="loadTime">等待</strong></div>
+          <div class="metric wide"><span>状态</span><strong data-key="status">初始化</strong></div>
+        </div>
+      </section>
+      <section class="panel-section">
+        <div class="section-title"><h2>固定相机</h2><span>两侧完全共享</span></div>
+        <div class="view-grid">
+          <button class="view-button active" data-view="overview">全景</button>
+          <button class="view-button" data-view="building">建筑近景</button>
+          <button class="view-button" data-view="edge">边缘区域</button>
+          <button class="view-button" data-view="texture">纹理细节</button>
+          <button class="view-button" data-view="top">地面俯视</button>
+        </div>
+        <p class="hint">每个视点由模型包围球按固定比例生成，可重复用于截图与加载测试。</p>
+      </section>
+    </aside>
+
+    <aside class="side-panel right">
+      <section class="panel-section">
+        <div class="model-tag"><strong class="a1-text" data-label="a1">右侧模型</strong><small>3D Tiles 1.1 · GLB</small></div>
+        <div class="metric-grid" data-metrics="a1">
+          <div class="metric"><span>可见 / 已加载瓦片</span><strong data-key="tiles">0 / 0</strong></div>
+          <div class="metric"><span>请求 / 处理中</span><strong data-key="queue">0 / 0</strong></div>
+          <div class="metric"><span>可见三角面</span><strong data-key="triangles">0</strong></div>
+          <div class="metric"><span>GPU 缓存估算</span><strong data-key="memory">0 MB</strong></div>
+          <div class="metric"><span>HTTP 请求 / 数据</span><strong data-key="network">0 / 0 MB</strong></div>
+          <div class="metric"><span>首视图加载</span><strong data-key="loadTime">等待</strong></div>
+          <div class="metric wide"><span>状态</span><strong data-key="status">初始化</strong></div>
+        </div>
+      </section>
+      <section class="panel-section">
+        <div class="section-title"><h2>量测复核</h2><span>右键完成面积</span></div>
+        <div class="measure-row">
+          <button class="measure-button" data-measure="distance">距离</button>
+          <button class="measure-button" data-measure="height">高差</button>
+          <button class="measure-button" data-measure="area">面积</button>
+        </div>
+        <div class="target-row">
+          <button class="target-button active" data-label="target-terra" data-target="terra">在左侧取点</button>
+          <button class="target-button" data-label="target-a1" data-target="a1">在右侧取点</button>
+        </div>
+        <div class="measure-actions">
+          <button id="finishMeasure" class="compact-button">完成当前</button>
+          <button id="clearMeasure" class="compact-button">清除全部</button>
+        </div>
+        <div class="result-board">
+          <div class="result-card"><span class="terra-text" data-label="result-terra">左侧结果</span><output id="terraResult">尚未量测</output></div>
+          <div class="result-card"><span class="a1-text" data-label="result-a1">右侧结果</span><output id="a1Result">尚未量测</output></div>
+        </div>
+        <p id="measureHint" class="hint">选择距离、高差或面积后，先指定模型再在表面取点。</p>
+      </section>
+    </aside>
+
+    <div class="split-label terra" data-label="split-terra">LEFT</div>
+    <div class="split-label a1" data-label="split-a1">RIGHT</div>
+    <div class="split-control" aria-label="左右对比分割位置">
+      <input id="splitRange" type="range" min="5" max="95" value="50">
+      <div class="split-line"><div class="split-handle">↔</div></div>
+    </div>
+
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-card">
+        <div class="eyebrow">LOCAL MODEL COMPARISON</div>
+        <h2>正在连接两套测绘模型</h2>
+        <p id="loadingMessage">正在读取模型服务配置。</p>
+        <div class="loading-bar"></div>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+
+    <script>window.CESIUM_BASE_URL = "/cesium/";</script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

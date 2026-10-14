@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "mesh-publication-manifest.v1",
+  "publicationId": "publication:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "candidateId": "mesh:remesh:v55-runtime",
+  "state": "published",
+  "source": {
+    "odxOutputManifestDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "remeshStrategyRevision": "ce879ab5389d3b59b26fff8b3ff2dcb7f93ae823"
+  },
+  "atomicDirectory": {
+    "algorithm": "sha256-tree-v1",
+    "treeDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "files": 209,
+    "bytes": 89832078,
+    "directoryName": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "tileset": {
+    "artifactId": "artifact:fixture:mesh-v55-tileset",
+    "relativePath": "tileset.json",
+    "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+    "mediaType": "application/json"
+  },
+  "validation": {
+    "contract": "mesh-publication-validation.v1",
+    "reportDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+  },
+  "result": {
+    "schemaVersion": "mesh-publication-result.v1",
+    "publicationId": "publication:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "candidateId": "mesh:remesh:v55-runtime",
+    "tileset": {
+      "artifactId": "artifact:fixture:mesh-v55-tileset",
+      "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+      "accessPath": "/v1/mesh-publications/publication:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff/tileset.json",
+      "authorization": "bearer"
+    }
+  }
+}

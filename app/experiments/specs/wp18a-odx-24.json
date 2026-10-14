@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "photogrammetry.odx.v1",
+  "inputId": "wp18a-lglglg-24",
+  "acquisition": {"id": "wp18a-lglglg-24"},
+  "crs": {"horizontal": "EPSG:32650", "vertical": "unspecified", "axisOrder": "east,north,up"},
+  "resourceBudget": {
+    "maxImages": 24,
+    "maxInputBytes": 200000000,
+    "maxWallSeconds": 7200,
+    "maxCpuCores": 8,
+    "maxMemoryBytes": 34359738368,
+    "maxDiskBytes": 42949672960
+  },
+  "odxParameters": {
+    "featureQuality": "high",
+    "pcQuality": "high",
+    "texturingToneMapping": "none"
+  }
+}

@@ -1,0 +1,45 @@
+[workspace]
+name = "mesh-research"
+version = "0.3.2"
+description = "Reproducible Remesh and adaptive HLOD research workspace"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+
+[feature.research.dependencies]
+numpy = ">=1.26,<3"
+pillow = ">=10,<13"
+typer = ">=0.16,<1"
+vtk = ">=9.3,<10"
+nodejs = ">=20,<25"
+
+[feature.runtime.dependencies]
+libgdal = "3.4.*"
+
+[feature.basisu-build.dependencies]
+cmake = ">=3.25,<4"
+cxx-compiler = ">=1.8,<2"
+ninja = ">=1.11,<2"
+
+[activation.env]
+PYTHONPATH = "$PIXI_PROJECT_ROOT/app"
+
+[feature.viewer.dependencies]
+fastapi = ">=0.116,<1"
+nodejs = ">=20,<25"
+uvicorn = ">=0.35,<1"
+
+[feature.dev.dependencies]
+httpx = ">=0.28,<1"
+jsonschema = ">=4.25,<5"
+pytest = ">=8,<10"
+ruff = ">=0.11,<0.16"
+
+[environments]
+default = { features = ["research", "dev"], solve-group = "research" }
+viewer = { features = ["viewer", "dev"], solve-group = "viewer" }
+runtime-abi = { features = ["runtime"], solve-group = "runtime-abi" }
+production = { features = ["research"], solve-group = "research" }
+basisu-build = { features = ["basisu-build"], solve-group = "basisu-build" }

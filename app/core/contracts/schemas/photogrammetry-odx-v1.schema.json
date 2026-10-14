@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://surveying.local/schemas/photogrammetry-odx-v1.schema.json",
+  "title": "photogrammetry.odx.v1 input manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "inputId",
+    "acquisition",
+    "images",
+    "crs",
+    "resourceBudget",
+    "odxParameters"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "photogrammetry.odx.v1"},
+    "inputId": {"$ref": "#/$defs/identity"},
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identity"},
+        "capturedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})(?![\\s\\S])"
+        },
+        "sensorId": {"$ref": "#/$defs/identity"}
+      }
+    },
+    "images": {"$ref": "#/$defs/imageTree"},
+    "groundControl": {"$ref": "#/$defs/artifact"},
+    "geoFile": {"$ref": "#/$defs/artifact"},
+    "imageGroups": {"$ref": "#/$defs/artifact"},
+    "crs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizontal", "vertical", "axisOrder"],
+      "properties": {
+        "horizontal": {"type": "string", "pattern": "^EPSG:[1-9][0-9]*$"},
+        "vertical": {"enum": ["ellipsoidal", "orthometric", "unspecified"]},
+        "axisOrder": {"enum": ["east,north,up", "longitude,latitude,height"]}
+      }
+    },
+    "resourceBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxImages",
+        "maxInputBytes",
+        "maxWallSeconds",
+        "maxCpuCores",
+        "maxMemoryBytes",
+        "maxDiskBytes"
+      ],
+      "properties": {
+        "maxImages": {"type": "integer", "minimum": 1},
+        "maxInputBytes": {"type": "integer", "minimum": 1},
+        "maxWallSeconds": {"type": "integer", "minimum": 1},
+        "maxCpuCores": {"type": "integer", "minimum": 1},
+        "maxMemoryBytes": {"type": "integer", "minimum": 1},
+        "maxDiskBytes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "odxParameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "orthophotoMode": {"enum": ["3d", "2.5d"], "default": "3d"},
+        "featureQuality": {"enum": ["ultra", "high", "medium", "low", "lowest"]},
+        "matcherNeighbors": {"type": "integer", "minimum": 1, "maximum": 64},
+        "pcQuality": {"enum": ["ultra", "high", "medium", "low", "lowest"]},
+        "meshSize": {"type": "integer", "minimum": 1000, "maximum": 10000000},
+        "meshOctreeDepth": {"type": "integer", "minimum": 8, "maximum": 14},
+        "texturingToneMapping": {"enum": ["none", "gamma", "drago", "reinhard"]}
+      }
+    }
+  },
+  "$defs": {
+    "identity": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{2,127}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "contentDigest", "bytes", "mediaType"],
+      "properties": {
+        "artifactId": {"$ref": "#/$defs/identity"},
+        "contentDigest": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "mediaType": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 127,
+          "pattern": "^[^\\s/]+/[^\\s/]+(?![\\s\\S])"
+        }
+      }
+    },
+    "imageTree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactId",
+        "contentDigest",
+        "bytes",
+        "fileCount",
+        "treeAlgorithm",
+        "mediaType"
+      ],
+      "properties": {
+        "artifactId": {"$ref": "#/$defs/identity"},
+        "contentDigest": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "fileCount": {"type": "integer", "minimum": 1},
+        "treeAlgorithm": {"const": "sha256-tree-v1"},
+        "mediaType": {"const": "application/vnd.surveying.image-tree"}
+      }
+    }
+  }
+}

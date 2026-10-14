@@ -1,0 +1,12 @@
+{
+  "name": "mesh-research-playwright",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Playwright audits and browser profiling for the mesh research workspace",
+  "engines": {
+    "node": ">=20 <25"
+  },
+  "dependencies": {
+    "playwright": "1.55.0"
+  }
+}

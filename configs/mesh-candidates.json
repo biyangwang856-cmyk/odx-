@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "mesh-candidate-identities.v1",
+  "defaultProductionId": "mesh:remesh:v55-runtime",
+  "candidates": [
+    {
+      "id": "comparison:terra:5.1.1",
+      "legacyId": "terra-5.1.1",
+      "label": "DJI Terra 5.1.1",
+      "role": "comparison-baseline",
+      "productionEligible": false
+    },
+    {
+      "id": "source:odx:3.8.3-eb9fd56",
+      "legacyId": "odx-3.8.3-eb9fd56",
+      "label": "ODX 3.8.3 @ eb9fd56",
+      "role": "photogrammetry-source",
+      "productionEligible": false
+    },
+    {
+      "id": "mesh:remesh:v55-runtime",
+      "legacyId": "remesh-v55",
+      "label": "REMESH_v55_runtime",
+      "role": "production-mesh",
+      "productionEligible": true
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "mesh-candidate-protocol.v1",
+  "dataset": {
+    "id": "LGLGLG",
+    "acquisitionId": "DJI_202604211048_033_LGLGLG",
+    "images": {
+      "algorithm": "sha256-tree-v1",
+      "count": 546,
+      "bytes": 4444096141,
+      "digest": "sha256:17d7a4f7f7e7da0a64a55894edabfb16bfbeffbd2184e40fa0eefddcae60107b"
+    },
+    "coordinates": {
+      "type": "LOCAL_ENU_CS",
+      "reference": {
+        "longitude": 114.232559538,
+        "latitude": 22.756110134,
+        "altitude": 148.286
+      },
+      "offset": [0.0, 0.0, 0.0],
+      "rotationVector": [0.0, 0.0, 0.0],
+      "scale": 1.0
+    }
+  },
+  "roles": {
+    "comparisonBaselineId": "terra-5.1.1",
+    "photogrammetrySourceId": "odx-3.8.3-eb9fd56",
+    "productionMeshCandidateIds": ["remesh-v55"],
+    "recommendedProductionMeshId": "remesh-v55"
+  },
+  "browser": {
+    "engine": "chromium",
+    "playwrightVersion": "1.55.0",
+    "browserVersion": "140.0.7339.16",
+    "browserRevision": "1187",
+    "cesiumVersion": "1.144.0",
+    "renderer": "SwiftShader",
+    "viewport": {"width": 1400, "height": 900},
+    "deviceScaleFactor": 1,
+    "maximumScreenSpaceError": 8,
+    "navigationTimeoutMs": 90000,
+    "anchor": {
+      "candidateId": "remesh-v55",
+      "publicationDigest": "sha256:d76db8931e5fd6aaf3cf17240c247751d32389681b5ac552eb5f000fab506d6c",
+      "tilesetDigest": "sha256:7ee09e40fea72d70ae70b709c70b8e957c9f7d92c1175e4e6ccb8e6ec18278f2",
+      "derivation": "Cesium3DTileset.boundingSphere"
+    },
+    "profilePairs": [
+      {"leftId": "terra-5.1.1", "rightId": "remesh-v55", "leftDisplayLabel": "DJI_Terra", "rightDisplayLabel": "REMESH_v55_runtime", "leftServiceLabel": "DJI_Terra", "rightServiceLabel": "REMESH_v55_runtime", "leftTilesetDigest": "sha256:ad064f4976baa3f5d486c0e9452ee7784b3b9b011d610fdf4c4d236bff158b26", "rightTilesetDigest": "sha256:7ee09e40fea72d70ae70b709c70b8e957c9f7d92c1175e4e6ccb8e6ec18278f2"},
+      {"leftId": "odx-3.8.3-eb9fd56", "rightId": "remesh-v55", "leftDisplayLabel": "ODX 3.8.3", "rightDisplayLabel": "REMESH_v55_runtime", "leftServiceLabel": "ODX", "rightServiceLabel": "REMESH_v55_runtime", "leftTilesetDigest": "sha256:e7d0d57a75e400b6edee57c4e03da8a2cd2d7b5ca1b5a00645e1496c729951a9", "rightTilesetDigest": "sha256:7ee09e40fea72d70ae70b709c70b8e957c9f7d92c1175e4e6ccb8e6ec18278f2"}
+    ],
+    "views": ["overview", "building", "texture", "edge"],
+    "cameraRules": {
+      "overview": {"east": 0.0, "north": 0.0, "up": 0.0, "heading": 25, "pitch": -34, "rangeRadius": 2.25},
+      "building": {"eastRadius": 0.08, "northRadius": -0.1, "up": 0.0, "heading": 42, "pitch": -19, "rangeRadius": 0.72},
+      "texture": {"eastRadius": -0.34, "northRadius": 0.24, "up": 0.0, "heading": 126, "pitch": -18, "rangeRadius": 0.42},
+      "edge": {"eastRadius": -0.34, "northRadius": 0.24, "up": 0.0, "heading": 126, "pitch": -26, "rangeRadius": 0.78}
+    },
+    "sampling": {"intervalMs": 250, "quietSamples": 3, "timeoutMs": 30000}
+  },
+  "candidates": [
+    {
+      "id": "terra-5.1.1",
+      "label": "DJI Terra 5.1.1",
+      "kind": "comparison-baseline",
+      "productionEligible": false,
+      "revisionKind": "engine",
+      "revision": "5.1.1",
+      "inputSource": "surveying-scene/LGLGLG/terra_b3dms",
+      "expectedPublication": {"algorithm": "sha256-tree-v1", "files": 1794, "bytes": 558170657, "digest": "sha256:23c4f0d6115afb36d850ebfdfc20e03340b8776d2bfed4eb0a374032f4251741"},
+      "rootEnvironment": "MESH_RESEARCH_TERRA_ROOT"
+    },
+    {
+      "id": "odx-3.8.3-eb9fd56",
+      "label": "ODX 3.8.3 @ eb9fd56",
+      "kind": "photogrammetry-source",
+      "productionEligible": false,
+      "revisionKind": "engine-source",
+      "revision": "eb9fd56ac430fc3735401d88aaef9945ebd00e14",
+      "inputSource": "LGLGLG/images@sha256:17d7a4f7f7e7da0a64a55894edabfb16bfbeffbd2184e40fa0eefddcae60107b",
+      "expectedPublication": {"algorithm": "sha256-tree-v1", "files": 193, "bytes": 2460179378, "digest": "sha256:2f43ad09f2bad4548348b94144aafc714d64441aa12217d20fae1028fb026325"},
+      "rootEnvironment": "MESH_RESEARCH_ODX_ROOT"
+    },
+    {
+      "id": "remesh-v55",
+      "label": "Remesh v55 runtime",
+      "kind": "production-mesh",
+      "productionEligible": true,
+      "revisionKind": "remesh-policy",
+      "revision": "v55",
+      "inputSource": "controlled ODX output through mesh.remesh-3d-tiles.v2",
+      "buildSource": {"path": "app/core/pipelines/gpu_textures.cjs", "digest": "sha256:9d85c5ed8e9354e0dfd55835e85c7a9f54f153eac7ba65150785fb96c91186e6"},
+      "expectedPublication": {"algorithm": "sha256-tree-v1", "files": 234, "bytes": 107905788, "digest": "sha256:d76db8931e5fd6aaf3cf17240c247751d32389681b5ac552eb5f000fab506d6c"},
+      "rootEnvironment": "MESH_RESEARCH_V55_ROOT"
+    }
+  ],
+  "commands": {
+    "validate": "just task analysis.validate-candidate-protocol -- --protocol app/experiments/specs/lglglg-candidate-baseline-v1.json --image-root <IMAGE_ROOT> --report <REPORT_JSON>",
+    "profile": "VIEWER_URL=<URL> LEFT_CANDIDATE_ID=<LEFT_ID> RIGHT_CANDIDATE_ID=remesh-v55 PROFILE_PROTOCOL_DIGEST=<PROTOCOL_DIGEST> PROFILE_OUTPUT=<REPORT_JSON> PROFILE_SCREENSHOT_ROOT=<SCREENSHOT_ROOT> PROFILE_SSE=8 PROFILE_NAVIGATION_TIMEOUT_MS=90000 PROFILE_PHASE_TIMEOUT_MS=30000 PROFILE_VIEWS=overview,building,texture,edge just task analysis.profile-pair-visual"
+  }
+}
